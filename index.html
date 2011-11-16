@@ -1,21 +1,25 @@
 <html>
 	<body>
-		<script src='../fullscreenApi-polyfill.js'></script>
+		<script src='fullscreenApi-polyfill.js'></script>
+
 		<h1>Demo FullScreen API polyfill</h1>
+
 		<button id='toggle'>Toggle FullScreen</button>
+
 		<script>
-		var element	= document.getElementById('toggle');
-		element.addEventListener('click', function(){
-			if( 'cancelFullScreen' in document ){
+			var element	= document.getElementById('toggle');
+			element.addEventListener('click', function(){
+				if( 'cancelFullScreen' in document ){
+					console.log("FullScreen API not supported")
+					return;
+				}
+					
 				if( document.isFullScreen ){
 					document.cancelFullScreen();		
 				}else{
 					document.body.requestFullScreen();
 				}
-			}else{
-				console.log("FullScreen API not supported")
-			}
-		});
+			});
 		</script>
 	</body>
 </html>
